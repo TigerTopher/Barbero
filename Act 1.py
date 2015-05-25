@@ -55,6 +55,17 @@ class Barbershop():
 		else:
 			return False
 
+	def isEmpty(self):
+		if(len(self.queue) == 0):
+			return True
+		return False
+
+	def inQueue(self, name):
+		if name in self.queue:
+			return True
+		else:
+			return False
+
 	def seeTop(self):
 		if self.queue == []:
 			return False
@@ -87,6 +98,9 @@ class Barbero(threading.Thread):
 	def sleep(self):
 		self.asleep = True
 
+	def wakeUp(self):
+		self.asleep = False
+
 	def run(self):
 		# 1. Check customer
 		# 	a. Meron -> Append sa list, cut hair. When barber is already cutting the hair of Customer, 
@@ -96,24 +110,30 @@ class Barbero(threading.Thread):
 
 		global timeElapsed
 		global workingHours
+		global barbershopVar
 
 		# This while is the outer loop. Once this is finished, Barber dies.
 		while timeElapsed.seconds < workingHours:
 			self.lock1.acquire()						# This tries to acquire the lock1.
 
 			try:										# If lock1 is acquired go here.
-				logging.debug("Holding")
-				time.sleep(0.5)
+				print "Barber acquires Lock."
+				logging.debug("Checking for customers.")
+
+				if(barbershopVar.isEmpty() == True):
+					logging.debug("Sleeping")
+					self.sleep()
+					time.sleep(1)
+				else:
+					logging.debug("There is a customer. Cutting customer's hair")
+					name = barbershopVar.pop()
+					print "Cutting the hair of " + name + "for 3 seconds..."
+					time.sleep(3)
 
 			finally:
 				logging.debug("Not holding")
 				self.lock1.release()
-				time.sleep(.5)
-
-
-
-
-
+				time.sleep(1)
 
 			while(self.isSleeping == True):
 				print "Barber Sleeping..."
@@ -133,26 +153,35 @@ class Customer (threading.Thread):
 		global timeElapsed
 		global workingHours
 		global barberVar
+		global barbershopVar
 
 		# First, try to get inside the queue.
 
 
 		# Second, check the barber.
 		# This while is the outer loop. Once this is finished, Customer dies.
-		while ( ( timeElapsed.seconds < workingHours ) and ( barberVar.inQueue( self.getName() ) == True ) ):
-			# The barber is awake in this line
+		#print self.getName()
+		#print barbershopVar.queue
+		while ( ( timeElapsed.seconds < workingHours ) and ( barbershopVar.inQueue( self.getName() ) == True ) ):
+			# The barber is awsake in this line
 
 			# LOCK 1
 			self.lock1.acquire()						# This tries to acquire the lock1.
 
 			try:										# If lock1 is acquired go here.
-				logging.debug("Holding")
-				time.sleep(0.5)
-
+				print self.getName() + " acquires lock."
+				# Check if barber is sleeping.
+				if (barberVar.isSleeping == True):
+					barberVar.wakeUp()
+					logging.debug("Waking up barber. Holding Lock.")
+					time.sleep(1)
+				else:
+					logging.debug("Barber is already awake.")
+				time.sleep(1)
 			finally:
-				logging.debug("Not holding")
+				logging.debug("Not holding lock.")
 				self.lock1.release()
-				time.sleep(.5)
+				time.sleep(1)
 		
 		return
 
@@ -184,10 +213,15 @@ barberVar = Barbero("Barber", lock1)
 
 #for i in range(1,5):
 #	customerVar = Customer("Customer", lock1)
-customerVar = Customer("Customer", lock1)
-barbershop.append(customerVar.getName())
-
-# Starting the threads
 timer.start()
 barberVar.start()
-customerVar.start()
+
+# Initializing the threads
+for x in range(1,5):
+	customerVar = Customer("Customer " + str(x), lock1)
+	customerVar.start()
+	barbershopVar.append(customerVar.getName() )
+	time.sleep(5)
+	print barbershopVar.queue
+
+# Starting the threads
