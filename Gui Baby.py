@@ -186,10 +186,13 @@ class Barbero(threading.Thread):
 				fp.write(stringHolder)
 				self.lock1.release()
 				time.sleep(0.25)
-
+			
+			stringHolder = "[ " + str(timeElapsed.seconds) + " ] " + "Barber is sleeping.\n"
 			while(self.isSleeping() == True):
-				stringHolder = "[ " + str(timeElapsed.seconds) + " ] " + "Barber is sleeping.\n"
-				fp.write(stringHolder)
+				pass
+				# time.sleep(1)
+				# fp.write(stringHolder)
+		
 		barberEnded = True
 		return
 
@@ -242,8 +245,10 @@ class Customer (threading.Thread):
 				try:										# If lock1 is acquired go here.
 					stringHolder =  "[ " + str(timeElapsed.seconds) + " ] " + self.getName() + " acquires lock1.\n"
 					fp.write(stringHolder)
+					print "ASS"
 					# Check if barber is sleeping.
 					if (barberVar.isSleeping() == True):
+						print "HEY"
 						barberVar.wakeUp()
 						stringHolder =  "[ " + str(timeElapsed.seconds) + " ] " + "Waking up barber. Holding Lock.\n"
 						fp.write(stringHolder)
