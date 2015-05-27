@@ -1,0 +1,128 @@
+[]
+Barber acquires lock 1.
+Customer 1 acquires lock 2 ( for enqueueing )
+Customer 1 successfully enqueues
+Customer 1 not holding lock 2 anymore.
+Barber is checking for customers.
+Barber acquires lock 2.
+Barber pops Customer 1 in list.
+Barber: Not holding lock 2 anymore.
+Cutting the hair of Customer 1 for 2 seconds...
+Customer 2 acquires lock 2 ( for enqueueing )
+Customer 2 successfully enqueues
+Customer 2 not holding lock 2 anymore.
+Customer 3 acquires lock 2 ( for enqueueing )
+Customer 3 successfully enqueues
+Customer 3 not holding lock 2 anymore.
+Customer 4 acquires lock 2 ( for enqueueing )
+Customer 4 successfully enqueues
+Customer 4 not holding lock 2 anymore.
+Customer 5 acquires lock 2 ( for enqueueing )
+Customer 5 successfully enqueues
+Customer 5 not holding lock 2 anymore.
+Barber: lock 1 is not held anymore.
+Customer 2 acquires lock1.
+Barber is already awake.
+Customer 2 is not holding lock 1 anymore.
+['Customer 2', 'Customer 3', 'Customer 4', 'Customer 5']
+Barber acquires lock 1.
+Barber is checking for customers.
+Barber acquires lock 2.
+Barber pops Customer 2 in list.
+Barber: Not holding lock 2 anymore.
+Customer 6 acquires lock 2 ( for enqueueing )
+Customer 6 successfully enqueues
+Customer 6 not holding lock 2 anymore.
+Cutting the hair of Customer 2 for 2 seconds...
+Customer 7 acquires lock 2 ( for enqueueing )
+Customer 7 successfully enqueues
+Customer 7 not holding lock 2 anymore.
+Customer 8 acquires lock 2 ( for enqueueing )
+Barbershop full. Customer 8 leaving
+Customer 8 not holding lock 2 anymore.
+Customer 9 acquires lock 2 ( for enqueueing )
+Barbershop full. Customer 9 leaving
+Customer 9 not holding lock 2 anymore.
+Barber: lock 1 is not held anymore.
+Customer 2 acquires lock1.
+Barber is already awake.
+Customer 2 is not holding lock 1 anymore.
+Customer 3 acquires lock1.
+Barber is already awake.
+Customer 3 is not holding lock 1 anymore.
+['Customer 3', 'Customer 4', 'Customer 5', 'Customer 6', 'Customer 7']
+Barber acquires lock 1.
+Barber is checking for customers.
+Barber acquires lock 2.
+Barber pops Customer 3 in list.
+Barber: Not holding lock 2 anymore.
+Barbershop is closed. Customer 6 is leaving.
+Barbershop is closed. Customer 7 is leaving.
+Barbershop is closed. Customer 5 is leaving.
+Customer 10 acquires lock 2 ( for enqueueing )
+Customer 10 successfully enqueues
+Customer 10 not holding lock 2 anymore.
+Cutting the hair of Customer 3 for 2 seconds...
+Barbershop is closed. Customer 10 is leaving.
+Customer 11 acquires lock 2 ( for enqueueing )
+Customer 11 successfully enqueues
+Customer 11 not holding lock 2 anymore.
+Barbershop is closed. Customer 11 is leaving.
+Customer 12 acquires lock 2 ( for enqueueing )
+Customer 12 successfully enqueues
+Customer 12 not holding lock 2 anymore.
+Barbershop is closed. Customer 12 is leaving.
+Customer 13 acquires lock 2 ( for enqueueing )
+Customer 13 successfully enqueues
+Customer 13 not holding lock 2 anymore.
+Barbershop is closed. Customer 13 is leaving.
+Customer 14 acquires lock 2 ( for enqueueing )
+Customer 14 successfully enqueues
+Customer 14 not holding lock 2 anymore.
+Barber: lock 1 is not held anymore.
+Customer 4 acquires lock1.
+Barber is already awake.
+Customer 4 is not holding lock 1 anymore.
+Barbershop is closed. Customer 14 is leaving.
+Barbershop is closed. Customer 4 is leaving.
+Customer 15 acquires lock 2 ( for enqueueing )
+Customer 15 successfully enqueues
+Customer 15 not holding lock 2 anymore.
+Barbershop is closed. Customer 15 is leaving.
+Customer 16 acquires lock 2 ( for enqueueing )
+Customer 16 successfully enqueues
+Customer 16 not holding lock 2 anymore.
+Barbershop is closed. Customer 16 is leaving.
+Customer 17 acquires lock 2 ( for enqueueing )
+Customer 17 successfully enqueues
+Customer 17 not holding lock 2 anymore.
+Barbershop is closed. Customer 17 is leaving.
+Customer 18 acquires lock 2 ( for enqueueing )
+Customer 18 successfully enqueues
+Customer 18 not holding lock 2 anymore.
+Barbershop is closed. Customer 18 is leaving.
+Customer 19 acquires lock 2 ( for enqueueing )
+Customer 19 successfully enqueues
+Customer 19 not holding lock 2 anymore.
+Barbershop is closed. Customer 19 is leaving.
+Served Customers:
+1.) Customer 1
+2.) Customer 2
+3.) Customer 3
+Unserved Customers:
+1.) Customer 8
+2.) Customer 9
+3.) Customer 6
+4.) Customer 7
+5.) Customer 5
+6.) Customer 10
+7.) Customer 11
+8.) Customer 12
+9.) Customer 13
+10.) Customer 14
+11.) Customer 4
+12.) Customer 15
+13.) Customer 16
+14.) Customer 17
+15.) Customer 18
+16.) Customer 19
