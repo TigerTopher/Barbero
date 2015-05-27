@@ -1,3 +1,18 @@
-5
-10
-15
+60
+Michael Jordan, 1
+Boy Abunda, 5
+Kanye West, 5
+Kobe Bryant, 5
+Benigno Aquino III, 5
+Lord Voldemort, 10
+Steve Jobs, 15
+Stanley Tucci, 18
+Lex Luthor, 21
+Shaquille O'neal, 24
+Pope Francis, 31
+Vladimir Putin, 35
+Samuel L. Jackson, 36
+Bruce Willis, 37
+The Dalai Lama, 40
+Mahatma Gandhi, 45
+
